@@ -14,7 +14,7 @@ quit;
 *To set ADAM library;
 libname adam "F:\SAS LEARNING\TRAIN FOLDER\DATA\ADAM" access = readonly; 
 
-*To get Bign from PCTCAEFL population flag;
+*To get Bign from SAFFL population flag;
 proc sort data = adam.adqs out = adqs_ nodupkey; 
   by usubjid;
   where SAFFL in ("Y"); 
