@@ -31,4 +31,10 @@ run;
 %put &trt_1.;  
 %put &trt_2.; 
 
+*TO get the right records for the graph;
+data adqs_sevtm(keep= usubjid trt01a trt01an aval avalc avisitn avisit paramcd param att symptom );
+  set adam.adqs; 
+  where SAFFL="Y" and parcat1="PRO-CTCAE" and paramcd in ("PT01003A") and anl02fl="Y" and avisit ne "After 18 weeks post PD-unscheduled";
+  symptom_=substr(param,6); 
+run; 
 
