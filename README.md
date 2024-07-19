@@ -17,3 +17,21 @@ quit;
 *To set ADAM library;
 libname adam "F:\SAS LEARNING\TRAIN FOLDER\DATA\ADAM" access = readonly; 
 
+*To get Bign from PCTCAEFL population flag;
+proc sort data = adam.adqs out = adqs_ nodupkey; 
+  by usubjid;
+  where PCTCAEFL in ("Y"); 
+run; 
+
+proc freq data = adqs_(where= (PCTCAEFL ="Y")) noprint; 
+  tables trt01an*trt01a / out = Bign(drop=percent);
+run;  
+
+data _null_;   
+  set bign;  
+  call symputx("trt_"!!put(trt01an,1.),count);
+run; 
+%put &trt_1.;  
+%put &trt_2.; 
+
+
