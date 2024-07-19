@@ -20,10 +20,10 @@ libname adam "F:\SAS LEARNING\TRAIN FOLDER\DATA\ADAM" access = readonly;
 *To get Bign from PCTCAEFL population flag;
 proc sort data = adam.adqs out = adqs_ nodupkey; 
   by usubjid;
-  where PCTCAEFL in ("Y"); 
+  where SAFFL in ("Y"); 
 run; 
 
-proc freq data = adqs_(where= (PCTCAEFL ="Y")) noprint; 
+proc freq data = adqs_(where= (SAFFL ="Y")) noprint; 
   tables trt01an*trt01a / out = Bign(drop=percent);
 run;  
 
